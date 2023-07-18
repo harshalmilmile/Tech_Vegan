@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tech Vegan Task-1</title>
+	<style type="text/css">
+		body{
+			background: #200122;  /* fallback for old browsers */
+			background: -webkit-linear-gradient(to right, #6f0000, #200122);  /* Chrome 10-25, Safari 5.1-6 */
+			background: linear-gradient(to right, #6f0000, #200122); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+		}
+		.main{
+			position: fixed;
+			width: 500px;
+			background: transparent;
+			border: 3px solid #FFF;
+			border-radius: 10px;
+			left: 450px;
+			color: #FFF;
+		}
+        .register{
+             background-color: #4CAF50;
+             color: white;
+             text-align: center;
+             text-decoration: none;
+             display: inline-block;
+             font-size: 14px;
+             margin: 4px 2px;
+        }
+        .clear{
+             background-color: #f44336;
+             color: white;
+             text-align: center;
+             text-decoration: none;
+             display: inline-block;
+             font-size: 14px;
+             margin: 4px 2px;
+        }
+	</style>
+	<script type="text/javascript">
+        function condition()
+        {
+            var name = document.getElementById("fname").value;
+            var email = document.getElementById("email").value;
+            var gender = document.getElementsByName("gender");
+            var mobile = document.getElementById("mobno").value; 
+            var password = document.getElementById("pass").value;
+            var feedback = document.getElementById("feedback").value;
+            var terms = document.getElementById("terms").checked;
+            var msg = new Array();
+            var flag = 1;
+
+            // Validation for name
+            if(name === ""){
+                msg[0] = "Please enter your Name";
+                flag = 0;
+            }
+            else if(!isNaN(name)){
+                msg[0] = "Only alphabets are allowed to enter";
+                flag = 0;
+            }
+            else{
+                msg[0] = "";
+            }
+
+            // Validation for email
+            if(email === ""){     
+                msg[1] = "Please enter your email Id";
+                flag = 0;
+            }
+            else if(email.indexOf('@') <= 0){
+                msg[1] = "Invalid email Id";
+                flag = 0;
+            }
+            else{
+                msg[1] = "";
+            }
+            
+            // Validation for gender
+            if(gender[0].checked === false && gender[1].checked === false){
+                msg[2] = "Select your Gender";
+                flag = 0;
+            } 
+            else{
+                msg[2] = "";
+            }
+
+            // Validation for Mobile No.
+            if(mobile === ""){
+                msg[3] = "Please enter your Mobile No.";
+                flag = 0;
+            }
+            else if(isNaN(mobile)){
+                msg[3] = "Only digits are allowed";
+                flag = 0;
+            }
+            else if(mobile.length !== 10){
+                msg[3] = "There must be 10 digits";
+                flag = 0;
+            }
+            else{
+                msg[3] = "";
+            }
+
+            // Validation for password
+            if(password === ""){
+                msg[4] = "Please enter password";
+                flag = 0;
+            }
+            else if(password.length < 8){
+                msg[4] = "Password must be at least 8 characters long";
+                flag = 0;
+            }
+            else{
+                msg[4] = "";
+            }
+
+            // Validation for feedback
+            if(feedback === ""){
+                msg[5] = "Please provide your feedback";
+                flag = 0;
+            }
+            else{
+                msg[5] = "";
+            }
+
+            // Validation for terms acceptance
+            if(!terms){
+                msg[6] = "Please accept the terms and conditions";
+                flag = 0;
+            }
+            else{
+                msg[6] = "";
+            }
+
+            // Condition for displaying message
+            if(flag === 0){
+                // Display message
+                alert(msg.join('\n'));
+                return false;
+            }
+            else{
+                return true;
+            }
+        }
+    </script>
+</head>
+<body>
+	<div align="center" class="main">
+	    <h1>Internship Application Form</h1>
+	    <form method="get" action="#" onsubmit="return condition()">
+	        <table border="0" cellpadding="5" cellspacing="4" class="table">
+	            <tr>
+	                <td>Name:</td>
+	                <td><input type="text" name="name" id="fname" placeholder="Enter Full name" size="25" /></td>
+	            </tr>
+	            <tr>
+	                <td>Email ID:</td>
+	                <td><input type="email" name="email" id="email" placeholder="Enter Email ID" size="25" /></td>
+	            </tr>
+	            <tr>
+	                <td>Gender:</td>
+	                <td>
+	                    <input type="radio" name="gender" value="Male" /> Male
+	                    <input type="radio" name="gender" value="Female" /> Female
+	                </td>
+	            </tr>
+	            <tr>
+	                <td>Mobile No.:</td>
+	                <td><input type="text" name="no" id="mobno" placeholder="Enter Mobile Number" size="25" /></td>
+	            </tr>
+	            <tr>
+	                <td>Password:</td>
+	                <td><input type="password" name="pass" id="pass" placeholder="Enter Password" size="25" /></td>
+	            </tr>
+	            <tr>
+	                <td>Interest:</td>
+	                <td><input type="text" name="feedback" id="feedback" placeholder="Enter Feedback" size="25" /></td>
+	            </tr>
+	            <tr>
+	                <td colspan="10" align="center">
+	                    <input type="checkbox" id="terms" name="terms" />
+	                    <label for="terms">I accept the terms and conditions</label>
+	                </td>
+	            </tr>
+	            <tr>
+	                <td colspan="10" align="center">
+	                    <input type="submit" class="register" value="Submit" id="register" />
+	                    <input type="reset" class="clear" value="Reset" />
+	                </td>
+	            </tr>
+	        </table>
+	    </form>
+	    <br />
+	    <footer align="center">
+	        <h>&copy; Harshal Milmile | Tech Vegan Intern</h>
+            <br>
+	    </footer>
+        <br><br>
+	</div>
+	<div class="ans" id="ans"></div>
+</body>
+</html>
